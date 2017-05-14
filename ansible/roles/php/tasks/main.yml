@@ -1,0 +1,19 @@
+---
+- name: include env-specific variables.
+  include_vars: "vars.yml"
+
+- name: php packages
+  yum: name={{item}} state=installed
+  with_items:
+    - php71u
+    - php71u-cli
+    - php71u-json
+    - php71u-pdo
+    - php71u-mysqlnd
+    - php71u-xml
+
+- include: tasks_centos.yml
+  static: no
+
+- include: configure_php_ini.yml
+  static: no

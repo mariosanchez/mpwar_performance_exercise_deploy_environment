@@ -1,0 +1,19 @@
+---
+- name: Simple Environment Provisioning
+  hosts: centos
+  become: true
+  become_user: root
+  vars_files:
+    - vars/mysql.yml
+    - vars/ansistrano.yml
+  roles:
+    - common
+    - epel
+    - httpd
+    - php
+    - composer
+    - redis
+    - { role: geerlingguy.mysql }
+    - { role: carlosbuenosvinos.ansistrano-deploy }
+    - database
+

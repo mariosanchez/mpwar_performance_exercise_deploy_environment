@@ -1,0 +1,4 @@
+---
+php_display_errors: "On"
+php_error_reporting: "E_ALL"
+php_max_execution_time: "8"
