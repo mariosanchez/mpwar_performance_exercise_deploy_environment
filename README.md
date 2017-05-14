@@ -7,7 +7,7 @@ prodcución.
 
 El código: https://github.com/fiunchinho/mpwar_performance_exercise
 
-###Preparando el entorno de desarrollo
+###Preparando el entorno de desarrollo y deployment
 
 Lo primero que he hecho ha sido hacer un fork del proyecto en mi cuenta de github e
 intentar entender que es lo que hace y como funciona.
@@ -61,6 +61,23 @@ como CSSs y JSs, he añadido posteriormente las directivas `RewriteCond %{REQUES
 y `RewriteCond %{REQUEST_FILENAME} !-f`.
 
 Tras esto parece que todo funciona.
+
+
+###Mejoras en la aplicación
+
+####Bootstrap
+Las primeras mejoras que he decidido abordar son las de bootstrap ya que creo que son las más
+sencillas de hacer y que me llevarán menos tiempo.
+
+Lo primero es hacer un poco de refactor en las vistas de twig para que se repita un poco menos 
+de codigo haciendo uso de `include` y `extends`.
+
+También he preparado la configuración de `prod.php` para que la dirección de los assets sea 
+dinamica y se pueda cambiar fácilmente en el momento de implementar cloudfront.
+
+Hecho esto he hecho referencia a los ficheros minificados de bootstrap desde la plantilla base.
+
+
 
 
 
