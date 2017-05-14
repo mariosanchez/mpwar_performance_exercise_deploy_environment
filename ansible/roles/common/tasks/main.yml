@@ -1,0 +1,16 @@
+---
+- name: install libselinux-python
+  yum: name=libselinux-python state=latest
+
+- name: common packages
+  yum: name={{item}} state=installed
+  with_items:
+    - htop
+    - wget
+    - vim
+    - git
+    - tree
+    - git
+
+- name: replace .bashrc
+  copy: src=bashrc dest=/home/vagrant/.bashrc mode=0644

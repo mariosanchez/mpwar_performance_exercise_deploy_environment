@@ -1,0 +1,5 @@
+mysql_user_password: root
+mysql_databases:
+  - name: mpwar_performance_blog
+    encoding: utf8
+    collation: utf8_general_ci
