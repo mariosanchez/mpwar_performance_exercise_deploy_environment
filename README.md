@@ -56,7 +56,9 @@ Una vez ya he podido ver la página de inicio de la aplicación, he necesitado c
 document .htaccess para habilitar el 'RewriteEngine' de apache y que de ese modo me 
 funcionen las rutas. Esto es un workarround teniendo en cuenta que lo ideal sería tener un
 virutal host de apache con toda la configuración ahí, pero ya he invertido mucho tiempo
-en la base de datos, así que, por el momento quedará así.
+en la base de datos, así que, por el momento quedará así. Para que podamos leer los assets
+como CSSs y JSs, he añadido posteriormente las directivas `RewriteCond %{REQUEST_FILENAME} !-d`
+y `RewriteCond %{REQUEST_FILENAME} !-f`.
 
 Tras esto parece que todo funciona.
 
