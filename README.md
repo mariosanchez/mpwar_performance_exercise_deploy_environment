@@ -78,9 +78,19 @@ dinamica y se pueda cambiar fácilmente en el momento de implementar cloudfront.
 Hecho esto he hecho referencia a los ficheros minificados de bootstrap desde la plantilla base.
 
 
+####Redis
 
+He añadido un nuevo role al playbook de ansible para instalar el servicio de Redis y así poder 
+hacer uso de este para almacenar sessiones y caché, así como otros usos de funcionalidad (rankings).
 
+Para facilitar el uso de Redis en Silex he decido instalar el paquete `predis/service-provider`.
+Para el caso de las sessiones voy a usar un SessionHandler de Symfony, `snc/redis-bundle`, y para
+almacenar datos de cache en Redis usaré el ServiceProvider `moust/silex-cache`.
 
+He hecho pruebas tanto de caché como de sesiones y todo parece funcionar a la perfección. Para esto
+he añadido el provider de caché al archivo `DomainServiceProvider` y en el archivo `app.php` he dado
+de alta los clientes de Redis y he sobreescrito el session handler de la configuración de Silex para
+que me funcionaran las sesiones.
 
 
 
