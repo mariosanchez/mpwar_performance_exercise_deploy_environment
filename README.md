@@ -92,6 +92,9 @@ he añadido el provider de caché al archivo `DomainServiceProvider` y en el arc
 de alta los clientes de Redis y he sobreescrito el session handler de la configuración de Silex para
 que me funcionaran las sesiones.
 
+Para el ranking de post más visitados he registrado otro cliente de Predis en el container de silex y 
+he usado un stored set para conseguir el ranking incrementando las visitas en cada lecura de articulo
+y recuperandolos en la home.
 
 ####Subida de imagenes a S3
 
