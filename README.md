@@ -93,5 +93,17 @@ de alta los clientes de Redis y he sobreescrito el session handler de la configu
 que me funcionaran las sesiones.
 
 
+####Subida de imagenes a S3
 
+Para la subida de las imagenes de perfil a S3 he decidido usar el vendor `league/flysystem-aws-s3-v3` 
+que nos provee de un cliente de S3 listo para usar simplemente pasando los parametros de conexión 
+(key y secret).
 
+He creado un nuevo bucket en S3 para el ejercicio y he creado una nueva clave de accesso y secret desde
+el panel de IAM de AWS.
+
+Para que las imagenes que se suben al bucket fueran publicas por defecto he creado una nueva politica y la 
+he añadido al bucket de tal forma que los usuarios pudieran ver las imagenes.
+
+Finalmente he hecho la implementación el en el caso de uso y las modificaciones en base de datos para poder
+persistir el enlace a la imagen.
