@@ -7,8 +7,8 @@
     - vars/mysql.yml
     - vars/ansistrano.yml
   roles:
-    - common
     - epel
+    - common
     - httpd
     - php
     - composer

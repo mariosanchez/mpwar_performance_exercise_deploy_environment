@@ -60,7 +60,9 @@ en la base de datos, así que, por el momento quedará así. Para que podamos le
 como CSSs y JSs, he añadido posteriormente las directivas `RewriteCond %{REQUEST_FILENAME} !-d`
 y `RewriteCond %{REQUEST_FILENAME} !-f`.
 
-Tras esto parece que todo funciona.
+Para evitar tener que hacer virtual hosts he creado una copia en el del httpd.conf en ansible
+con las modificaciones que he necesitad para que luego en el aprovisionamiento se reemplace por
+el por defecto.
 
 
 ###Mejoras en la aplicación
@@ -96,6 +98,10 @@ Para el ranking de post más visitados he registrado otro cliente de Predis en e
 he usado un stored set para conseguir el ranking incrementando las visitas en cada lecura de articulo
 y recuperandolos en la home.
 
+He tenido problemas de permisos con redis por lo que he necesitado desactivar una configuración de 
+ selinux que daba problemas al intentar acceder a redis desde PHP con Centos7.
+
+
 ####Subida de imagenes a S3
 
 Para la subida de las imagenes de perfil a S3 he decidido usar el vendor `league/flysystem-aws-s3-v3` 
@@ -110,3 +116,20 @@ he añadido al bucket de tal forma que los usuarios pudieran ver las imagenes.
 
 Finalmente he hecho la implementación el en el caso de uso y las modificaciones en base de datos para poder
 persistir el enlace a la imagen.
+
+
+####HTTP Cache 
+
+He añadido las cabeceras de cache a la home y a la vista de articulo para que el browser cachee assets y 
+contenido de pagina a menos que el usuario haga f5.
+
+
+###Subida a EC3 y gestión del Load Balancer
+
+Cuando ya he tenido todas las mejoras hechas en la aplicación decido hacer pruebas en AWS para ver si todo 
+se aprovisiona correctamente.
+
+Primero he creado una maquina de prueba con todos los servicios para ver si funcionaba y tras algunas 
+modificaciones parece que todo va correctamente.
+
+El siguiente paso es crear un balanceador de carga que distribuya el trafico entre 2 frontales.

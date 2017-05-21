@@ -3,3 +3,9 @@
 
 - name: Enable httpd service
   service: name=httpd state=started enabled=yes
+
+- name: replace httpd.conf
+  copy: src=httpd.conf dest=/etc/httpd/conf mode=0644
+
+- name: Restart httpd service
+  service: name=httpd state=restarted enabled=yes
