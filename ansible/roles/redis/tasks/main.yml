@@ -1,5 +1,8 @@
 - name: "install redis"
   yum: state=present name=redis
 
+- name: replace httpd.conf
+  copy: src=redis.conf dest=/etc mode=0644
+
 - name: "restart redis"
   service: name=redis state=restarted
