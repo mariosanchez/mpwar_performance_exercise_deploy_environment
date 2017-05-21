@@ -11,9 +11,13 @@
     - php71u-pdo
     - php71u-mysqlnd
     - php71u-xml
+    - php71u-pecl-redis.x86_64
 
 - include: tasks_centos.yml
   static: no
 
 - include: configure_php_ini.yml
   static: no
+
+- name: Restart httpd service
+  service: name=httpd state=restarted enabled=yes

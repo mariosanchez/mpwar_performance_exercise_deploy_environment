@@ -12,5 +12,8 @@
     - tree
     - git
 
-- name: replace .bashrc
-  copy: src=bashrc dest=/home/vagrant/.bashrc mode=0644
+
+- seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
