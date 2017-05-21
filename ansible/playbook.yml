@@ -1,19 +1,55 @@
 ---
-- name: Simple Environment Provisioning
-  hosts: centos
+- name: Frontal servers provisioning
+  hosts: web
   become: true
   become_user: root
   vars_files:
-    - vars/mysql.yml
     - vars/ansistrano.yml
   roles:
     - epel
     - common
-    - httpd
+    - hosts
     - php
     - composer
-    - redis
-    - { role: geerlingguy.mysql }
     - { role: carlosbuenosvinos.ansistrano-deploy }
+    - httpd
+    - redis
+
+- name: Distributed Redis provisioning
+  hosts: redis
+  become: true
+  become_user: root
+  roles:
+    - epel
+    - common
+    - redis
+
+- name: Distributed MySQL provisioning
+  hosts: mysql
+  become: true
+  become_user: root
+  vars_files:
+    - vars/mysql.yml
+  roles:
+    - epel
+    - common
+    - { role: geerlingguy.mysql }
     - database
 
+- name: Vagrant version for envirnoment
+  hosts: vagrant
+  become: true
+  become_user: root
+  vars_files:
+    - vars/ansistrano.yml
+  roles:
+    - epel
+    - common
+    - hosts
+    - php
+    - composer
+    - { role: carlosbuenosvinos.ansistrano-deploy }
+    - httpd
+    - { role: geerlingguy.mysql }
+    - database
+    - redis

@@ -1,0 +1,14 @@
+- lineinfile:
+    path: /etc/hosts
+    regexp: '^35\.176\.4\.46 mysql'
+    line: '35.176.4.46 mysql'
+    owner: root
+    group: root
+    mode: 0644
+- lineinfile:
+    path: /etc/hosts
+    regexp: '^35\.176\.58\.72 redis'
+    line: '35.176.58.72 redis'
+    owner: root
+    group: root
+    mode: 0644
