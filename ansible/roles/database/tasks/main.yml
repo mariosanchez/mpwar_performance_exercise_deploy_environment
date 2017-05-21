@@ -1,2 +1,5 @@
+- name: replace httpd.conf
+  copy: src=migration.sql dest=/var/tmp mode=0644
+
 - name: "Seed MySQL database"
-  shell: mysql -h localhost -u root --password=root mpwar_performance_blog < /var/www/html/resources/dataset.sql
+  shell: mysql -h localhost -u root --password=root mpwar_performance_blog < /var/tmp/migration.sql
