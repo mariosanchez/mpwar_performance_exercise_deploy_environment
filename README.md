@@ -132,4 +132,4 @@ se aprovisiona correctamente.
 Primero he creado una maquina de prueba con todos los servicios para ver si funcionaba y tras algunas 
 modificaciones parece que todo va correctamente.
 
-El siguiente paso es crear un balanceador de carga que distribuya el trafico entre 2 frontales.
+El siguiente paso es crear un balanceador de carga que distribuya el tráfico entre 2 frontales.
