@@ -1,5 +1,5 @@
-#Ejercicio de web performance
-##Diario de trabajo
+# Ejercicio de web performance
+## Diario de trabajo
 
 En este ejercicio parto de un código base al que necesito aplicar una serie de 
 mejoras que optimicen los tiempos de carga que tendría este proyecto de ejemplo en 
@@ -7,7 +7,7 @@ prodcución.
 
 El código: https://github.com/fiunchinho/mpwar_performance_exercise
 
-###Preparando el entorno de desarrollo y deployment
+### Preparando el entorno de desarrollo y deployment
 
 Lo primero que he hecho ha sido hacer un fork del proyecto en mi cuenta de github e
 intentar entender que es lo que hace y como funciona.
@@ -65,9 +65,9 @@ con las modificaciones que he necesitad para que luego en el aprovisionamiento s
 el por defecto.
 
 
-###Mejoras en la aplicación
+### Mejoras en la aplicación
 
-####Bootstrap
+#### Bootstrap
 Las primeras mejoras que he decidido abordar son las de bootstrap ya que creo que son las más
 sencillas de hacer y que me llevarán menos tiempo.
 
@@ -80,7 +80,7 @@ dinamica y se pueda cambiar fácilmente en el momento de implementar cloudfront.
 Hecho esto he hecho referencia a los ficheros minificados de bootstrap desde la plantilla base.
 
 
-####Redis
+#### Redis
 
 He añadido un nuevo role al playbook de ansible para instalar el servicio de Redis y así poder 
 hacer uso de este para almacenar sessiones y caché, así como otros usos de funcionalidad (rankings).
@@ -102,7 +102,7 @@ He tenido problemas de permisos con redis por lo que he necesitado desactivar un
  selinux que daba problemas al intentar acceder a redis desde PHP con Centos7.
 
 
-####Subida de imagenes a S3
+#### Subida de imagenes a S3
 
 Para la subida de las imagenes de perfil a S3 he decidido usar el vendor `league/flysystem-aws-s3-v3` 
 que nos provee de un cliente de S3 listo para usar simplemente pasando los parametros de conexión 
@@ -118,7 +118,7 @@ Finalmente he hecho la implementación el en el caso de uso y las modificaciones
 persistir el enlace a la imagen.
 
 
-####HTTP Cache 
+#### HTTP Cache 
 
 He añadido las cabeceras de cache a la home y a la vista de articulo para que el browser cachee assets y 
 contenido de pagina a menos que el usuario haga f5.
@@ -127,7 +127,7 @@ Finalmente he tenido que revertir algunos de los cambios ya que me daban probelm
 y no he sabido resolverlo.
 
 
-###Subida a EC3 y gestión del Load Balancer
+### Subida a EC3 y gestión del Load Balancer
 
 Cuando ya he tenido todas las mejoras hechas en la aplicación decido hacer pruebas en AWS para ver si todo 
 se aprovisiona correctamente.
@@ -137,12 +137,12 @@ modificaciones parece que todo va correctamente.
 
 El siguiente paso es crear un balanceador de carga que distribuya el tráfico entre 2 frontales.
 
-###Cloudfront
+### Cloudfront
 Para cloudfront simplemente he dado de alta una nueva distribución con los valores por defecto y he cambiado la 
 url de CDN (que ya había preparado previamente) en el proyecto.
 
 
-###Blackfire
+### Blackfire
 Siguiendo la instrucciones de los compañeros, he desactivado SELINUX en los frontales y e instalado manualmente
 el agente de blackfire. Tras esto el proceso de profiling ha ido a la perfección.
 
@@ -154,9 +154,9 @@ vim /etc/sysconfig/selinux
 Y seteamos `SELINUX=disabled`.
 
 
-###Testing & Profiling
+### Testing & Profiling
 
-####Apache A/B
+#### Apache A/B
 
 
 Commit 7a9f368c4f3468d6a79ee28aa701f70a4b04571b
@@ -373,5 +373,5 @@ Percentage of the requests served within a certain time (ms)
 
 ```
 
-####Blackfire
+#### Blackfire
 https://blackfire.io/profiles/12ac3405-0f1d-4693-86f5-9b184988364f/graph
