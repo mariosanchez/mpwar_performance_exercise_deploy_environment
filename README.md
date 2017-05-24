@@ -133,3 +133,12 @@ Primero he creado una maquina de prueba con todos los servicios para ver si func
 modificaciones parece que todo va correctamente.
 
 El siguiente paso es crear un balanceador de carga que distribuya el tráfico entre 2 frontales.
+
+
+###Testing & Profiling
+
+####Apache A/B
+
+
+####Blackfire
+https://blackfire.io/profiles/12ac3405-0f1d-4693-86f5-9b184988364f/graph
